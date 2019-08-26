@@ -92,7 +92,7 @@ If you start from a clean EC2 instance with Amazon Linux (or any linux distribut
 
 ```shell
 git clone git@github.com:aws-samples/aws-dynamodb-enterprise-application.git
-cd aws-dynamodb-crud-demo
+cd aws-dynamodb-enterprise-application
 sh install.sh
 sh deploy.sh <environementName>
 ```
