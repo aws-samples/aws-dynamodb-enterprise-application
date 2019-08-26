@@ -91,7 +91,7 @@ You also need to have installed the AWS GO SDK and be able to compile GO code lo
 If you start from a clean EC2 instance with Amazon Linux (or any linux distribution using the yum package manager), follow the steps below to run the demo.
 
 ```shell
-git clone xxxx
+git clone git@github.com:aws-samples/aws-dynamodb-enterprise-application.git
 cd aws-dynamodb-crud-demo
 sh install.sh
 sh deploy.sh <environementName>
