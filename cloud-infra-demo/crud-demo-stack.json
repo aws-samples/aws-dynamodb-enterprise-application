@@ -1,5 +1,5 @@
 Resources:
-  awsDynamoCrudDemotest3ServiceRole37803F1D:
+  awsDynamoCrudDemotest11ServiceRoleB4108CCC:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -20,8 +20,8 @@ Resources:
               - Ref: AWS::Partition
               - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ServiceRole/Resource
-  awsDynamoCrudDemotest3ServiceRoleDefaultPolicy56F8286E:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ServiceRole/Resource
+  awsDynamoCrudDemotest11ServiceRoleDefaultPolicyBAE38FED:
     Type: AWS::IAM::Policy
     Properties:
       PolicyDocument:
@@ -44,17 +44,17 @@ Resources:
                   - Arn
               - Ref: AWS::NoValue
         Version: "2012-10-17"
-      PolicyName: awsDynamoCrudDemotest3ServiceRoleDefaultPolicy56F8286E
+      PolicyName: awsDynamoCrudDemotest11ServiceRoleDefaultPolicyBAE38FED
       Roles:
-        - Ref: awsDynamoCrudDemotest3ServiceRole37803F1D
+        - Ref: awsDynamoCrudDemotest11ServiceRoleB4108CCC
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ServiceRole/DefaultPolicy/Resource
-  awsDynamoCrudDemotest38F32CC48:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ServiceRole/DefaultPolicy/Resource
+  awsDynamoCrudDemotest11A3A88070:
     Type: AWS::Lambda::Function
     Properties:
       Code:
         S3Bucket:
-          Ref: awsDynamoCrudDemotest3CodeS3Bucket65BDCF26
+          Ref: awsDynamoCrudDemotest11CodeS3Bucket4085E4FC
         S3Key:
           Fn::Join:
             - ""
@@ -62,36 +62,36 @@ Resources:
                   - 0
                   - Fn::Split:
                       - "||"
-                      - Ref: awsDynamoCrudDemotest3CodeS3VersionKey338DBF37
+                      - Ref: awsDynamoCrudDemotest11CodeS3VersionKey65C166C0
               - Fn::Select:
                   - 1
                   - Fn::Split:
                       - "||"
-                      - Ref: awsDynamoCrudDemotest3CodeS3VersionKey338DBF37
+                      - Ref: awsDynamoCrudDemotest11CodeS3VersionKey65C166C0
       Handler: main
       Role:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest3ServiceRole37803F1D
+          - awsDynamoCrudDemotest11ServiceRoleB4108CCC
           - Arn
       Runtime: go1.x
       Environment:
         Variables:
-          LAMBDA_ENV: test3
-      FunctionName: manageCloudrackConfigtest3
+          LAMBDA_ENV: test11
+      FunctionName: manageCloudrackConfigtest11
     DependsOn:
-      - awsDynamoCrudDemotest3ServiceRoleDefaultPolicy56F8286E
-      - awsDynamoCrudDemotest3ServiceRole37803F1D
+      - awsDynamoCrudDemotest11ServiceRoleDefaultPolicyBAE38FED
+      - awsDynamoCrudDemotest11ServiceRoleB4108CCC
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/Resource
-      aws:asset:path: asset.404a4c157536b87f8ea261aae657ba0b1636b2889f7edd602eccb29c3e9781ec.zip
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/Resource
+      aws:asset:path: asset.0d9d1de0aafcf9fe0bac8a78c607b18668c25dd7ca6724909fb7dce3bc24cee1.zip
       aws:asset:property: Code
-  awsDynamoCrudDemotest3ApiPermissionGETconfigA3FA206B:
+  awsDynamoCrudDemotest11ApiPermissionGETconfigC16965A0:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -104,19 +104,19 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /
-            - Ref: awsCrudDemotest3DeploymentStageprodEE65860A
+            - Ref: awsCrudDemotest11DeploymentStageprod5BF44B71
             - /GET/config
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.GET..config
-  awsDynamoCrudDemotest3ApiPermissionTestGETconfigAADD822C:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.GET..config
+  awsDynamoCrudDemotest11ApiPermissionTestGETconfig42FAF073:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -129,17 +129,17 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /test-invoke-stage/GET/config
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.Test.GET..config
-  awsDynamoCrudDemotest3ApiPermissionPOSTconfigE1CC1055:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.Test.GET..config
+  awsDynamoCrudDemotest11ApiPermissionPOSTconfig9171A00F:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -152,19 +152,19 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /
-            - Ref: awsCrudDemotest3DeploymentStageprodEE65860A
+            - Ref: awsCrudDemotest11DeploymentStageprod5BF44B71
             - /POST/config
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.POST..config
-  awsDynamoCrudDemotest3ApiPermissionTestPOSTconfig698AB008:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.POST..config
+  awsDynamoCrudDemotest11ApiPermissionTestPOSTconfig25EE4714:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -177,17 +177,17 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /test-invoke-stage/POST/config
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.Test.POST..config
-  awsDynamoCrudDemotest3ApiPermissionGETconfigidAC92E9D1:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.Test.POST..config
+  awsDynamoCrudDemotest11ApiPermissionGETconfigid5DC5EB0D:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -200,19 +200,19 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /
-            - Ref: awsCrudDemotest3DeploymentStageprodEE65860A
+            - Ref: awsCrudDemotest11DeploymentStageprod5BF44B71
             - /GET/config/{id}
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.GET..config.{id}
-  awsDynamoCrudDemotest3ApiPermissionTestGETconfigid9F17B731:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.GET..config.{id}
+  awsDynamoCrudDemotest11ApiPermissionTestGETconfigidE1DB4FF6:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -225,17 +225,17 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /test-invoke-stage/GET/config/{id}
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.Test.GET..config.{id}
-  awsDynamoCrudDemotest3ApiPermissionPOSTconfigidroomstype552DEFF4:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.Test.GET..config.{id}
+  awsDynamoCrudDemotest11ApiPermissionPOSTconfigidroomstype6C296597:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -248,19 +248,19 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /
-            - Ref: awsCrudDemotest3DeploymentStageprodEE65860A
+            - Ref: awsCrudDemotest11DeploymentStageprod5BF44B71
             - /POST/config/{id}/rooms/type
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.POST..config.{id}.rooms.type
-  awsDynamoCrudDemotest3ApiPermissionTestPOSTconfigidroomstype29FEA92F:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.POST..config.{id}.rooms.type
+  awsDynamoCrudDemotest11ApiPermissionTestPOSTconfigidroomstype8D95017C:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -273,17 +273,17 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /test-invoke-stage/POST/config/{id}/rooms/type
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.Test.POST..config.{id}.rooms.type
-  awsDynamoCrudDemotest3ApiPermissionDELETEconfigidroomstypetypecode324E9804:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.Test.POST..config.{id}.rooms.type
+  awsDynamoCrudDemotest11ApiPermissionDELETEconfigidroomstypetypecode2BC197AD:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -296,19 +296,19 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /
-            - Ref: awsCrudDemotest3DeploymentStageprodEE65860A
+            - Ref: awsCrudDemotest11DeploymentStageprod5BF44B71
             - /DELETE/config/{id}/rooms/type/{typecode}
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.DELETE..config.{id}.rooms.type.{typecode}
-  awsDynamoCrudDemotest3ApiPermissionTestDELETEconfigidroomstypetypecodeC512F2F2:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.DELETE..config.{id}.rooms.type.{typecode}
+  awsDynamoCrudDemotest11ApiPermissionTestDELETEconfigidroomstypetypecodeB4FE1892:
     Type: AWS::Lambda::Permission
     Properties:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::GetAtt:
-          - awsDynamoCrudDemotest38F32CC48
+          - awsDynamoCrudDemotest11A3A88070
           - Arn
       Principal: apigateway.amazonaws.com
       SourceArn:
@@ -321,10 +321,10 @@ Resources:
             - ":"
             - Ref: AWS::AccountId
             - ":"
-            - Ref: awsCrudDemotest33D676BCF
+            - Ref: awsCrudDemotest116BF247D6
             - /test-invoke-stage/DELETE/config/{id}/rooms/type/{typecode}
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/ApiPermission.Test.DELETE..config.{id}.rooms.type.{typecode}
+      aws:cdk:path: CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/ApiPermission.Test.DELETE..config.{id}.rooms.type.{typecode}
   TableCD117FA1:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -341,48 +341,48 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 5
         WriteCapacityUnits: 5
-      TableName: aws-crud-demo-config-test3
+      TableName: aws-crud-demo-config-test11
     UpdateReplacePolicy: Retain
     DeletionPolicy: Retain
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/Table/Resource
-  awsCrudDemotest33D676BCF:
+      aws:cdk:path: CloudInfraDemoStacktest11/Table/Resource
+  awsCrudDemotest116BF247D6:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: awsCrudDemotest3
+      Name: awsCrudDemotest11
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Resource
-  awsCrudDemotest3Deployment244AB56C5e0c1b1020f233aab4655491ad99b2a2:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Resource
+  awsCrudDemotest11Deployment79D33E658e5eda66cc75e3270bd85410062ffd3f:
     Type: AWS::ApiGateway::Deployment
     Properties:
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       Description: Automatically created by the RestApi construct
     DependsOn:
-      - awsCrudDemotest3configidGET1EA915B5
-      - awsCrudDemotest3configidOPTIONSA102B5D8
-      - awsCrudDemotest3configidFC889980
-      - awsCrudDemotest3configidroomsOPTIONS23F88D3B
-      - awsCrudDemotest3configidrooms6F8D085C
-      - awsCrudDemotest3configidroomstypetypecodeDELETE69160411
-      - awsCrudDemotest3configidroomstypetypecodeOPTIONSD67AAB27
-      - awsCrudDemotest3configidroomstypetypecodeC0B719C8
-      - awsCrudDemotest3configidroomstypeOPTIONS71EEC6EB
-      - awsCrudDemotest3configidroomstypePOST00390234
-      - awsCrudDemotest3configidroomstype7D351BE5
-      - awsCrudDemotest3configGET42993285
-      - awsCrudDemotest3configOPTIONS2ADF4538
-      - awsCrudDemotest3configPOSTFD533DED
-      - awsCrudDemotest3config36A7AE1B
+      - awsCrudDemotest11configidGET19D8E1E2
+      - awsCrudDemotest11configidOPTIONS8EB0EB9C
+      - awsCrudDemotest11configid176D20F3
+      - awsCrudDemotest11configidroomsOPTIONS14B04F29
+      - awsCrudDemotest11configidrooms57FAEF80
+      - awsCrudDemotest11configidroomstypetypecodeDELETE7F057544
+      - awsCrudDemotest11configidroomstypetypecodeOPTIONS11EF4D6E
+      - awsCrudDemotest11configidroomstypetypecode0FBE0D0C
+      - awsCrudDemotest11configidroomstypeOPTIONS444799AC
+      - awsCrudDemotest11configidroomstypePOSTEB98E720
+      - awsCrudDemotest11configidroomstype6F1B79D9
+      - awsCrudDemotest11configGET6FF98873
+      - awsCrudDemotest11configOPTIONS637E32AC
+      - awsCrudDemotest11configPOST80CBB723
+      - awsCrudDemotest11config0E09AF59
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Deployment/Resource
-  awsCrudDemotest3DeploymentStageprodEE65860A:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Deployment/Resource
+  awsCrudDemotest11DeploymentStageprod5BF44B71:
     Type: AWS::ApiGateway::Stage
     Properties:
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       DeploymentId:
-        Ref: awsCrudDemotest3Deployment244AB56C5e0c1b1020f233aab4655491ad99b2a2
+        Ref: awsCrudDemotest11Deployment79D33E658e5eda66cc75e3270bd85410062ffd3f
       MethodSettings:
         - DataTraceEnabled: true
           HttpMethod: "*"
@@ -390,8 +390,8 @@ Resources:
           ResourcePath: /*
       StageName: prod
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/DeploymentStage.prod/Resource
-  awsCrudDemotest3CloudWatchRole371627BD:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/DeploymentStage.prod/Resource
+  awsCrudDemotest11CloudWatchRoleC4999569:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -412,38 +412,38 @@ Resources:
               - Ref: AWS::Partition
               - :iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/CloudWatchRole/Resource
-  awsCrudDemotest3Account65E034CE:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/CloudWatchRole/Resource
+  awsCrudDemotest11Account1C8414B3:
     Type: AWS::ApiGateway::Account
     Properties:
       CloudWatchRoleArn:
         Fn::GetAtt:
-          - awsCrudDemotest3CloudWatchRole371627BD
+          - awsCrudDemotest11CloudWatchRoleC4999569
           - Arn
     DependsOn:
-      - awsCrudDemotest33D676BCF
+      - awsCrudDemotest116BF247D6
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Account
-  awsCrudDemotest3config36A7AE1B:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Account
+  awsCrudDemotest11config0E09AF59:
     Type: AWS::ApiGateway::Resource
     Properties:
       ParentId:
         Fn::GetAtt:
-          - awsCrudDemotest33D676BCF
+          - awsCrudDemotest116BF247D6
           - RootResourceId
       PathPart: config
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/Resource
-  awsCrudDemotest3configOPTIONS2ADF4538:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/Resource
+  awsCrudDemotest11configOPTIONS637E32AC:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: OPTIONS
       ResourceId:
-        Ref: awsCrudDemotest3config36A7AE1B
+        Ref: awsCrudDemotest11config0E09AF59
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationResponses:
@@ -465,15 +465,15 @@ Resources:
             method.response.header.Access-Control-Allow-Origin: true
           StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/OPTIONS/Resource
-  awsCrudDemotest3configGET42993285:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/OPTIONS/Resource
+  awsCrudDemotest11configGET6FF98873:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: GET
       ResourceId:
-        Ref: awsCrudDemotest3config36A7AE1B
+        Ref: awsCrudDemotest11config0E09AF59
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationHttpMethod: POST
@@ -491,21 +491,21 @@ Resources:
               - Ref: AWS::Region
               - :lambda:path/2015-03-31/functions/
               - Fn::GetAtt:
-                  - awsDynamoCrudDemotest38F32CC48
+                  - awsDynamoCrudDemotest11A3A88070
                   - Arn
               - /invocations
       MethodResponses:
         - StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/GET/Resource
-  awsCrudDemotest3configPOSTFD533DED:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/GET/Resource
+  awsCrudDemotest11configPOST80CBB723:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: POST
       ResourceId:
-        Ref: awsCrudDemotest3config36A7AE1B
+        Ref: awsCrudDemotest11config0E09AF59
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationHttpMethod: POST
@@ -523,31 +523,31 @@ Resources:
               - Ref: AWS::Region
               - :lambda:path/2015-03-31/functions/
               - Fn::GetAtt:
-                  - awsDynamoCrudDemotest38F32CC48
+                  - awsDynamoCrudDemotest11A3A88070
                   - Arn
               - /invocations
       MethodResponses:
         - StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/POST/Resource
-  awsCrudDemotest3configidFC889980:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/POST/Resource
+  awsCrudDemotest11configid176D20F3:
     Type: AWS::ApiGateway::Resource
     Properties:
       ParentId:
-        Ref: awsCrudDemotest3config36A7AE1B
+        Ref: awsCrudDemotest11config0E09AF59
       PathPart: "{id}"
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/Resource
-  awsCrudDemotest3configidGET1EA915B5:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/Resource
+  awsCrudDemotest11configidGET19D8E1E2:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: GET
       ResourceId:
-        Ref: awsCrudDemotest3configidFC889980
+        Ref: awsCrudDemotest11configid176D20F3
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationHttpMethod: POST
@@ -565,21 +565,21 @@ Resources:
               - Ref: AWS::Region
               - :lambda:path/2015-03-31/functions/
               - Fn::GetAtt:
-                  - awsDynamoCrudDemotest38F32CC48
+                  - awsDynamoCrudDemotest11A3A88070
                   - Arn
               - /invocations
       MethodResponses:
         - StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/GET/Resource
-  awsCrudDemotest3configidOPTIONSA102B5D8:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/GET/Resource
+  awsCrudDemotest11configidOPTIONS8EB0EB9C:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: OPTIONS
       ResourceId:
-        Ref: awsCrudDemotest3configidFC889980
+        Ref: awsCrudDemotest11configid176D20F3
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationResponses:
@@ -601,25 +601,25 @@ Resources:
             method.response.header.Access-Control-Allow-Origin: true
           StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/OPTIONS/Resource
-  awsCrudDemotest3configidrooms6F8D085C:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/OPTIONS/Resource
+  awsCrudDemotest11configidrooms57FAEF80:
     Type: AWS::ApiGateway::Resource
     Properties:
       ParentId:
-        Ref: awsCrudDemotest3configidFC889980
+        Ref: awsCrudDemotest11configid176D20F3
       PathPart: rooms
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/Resource
-  awsCrudDemotest3configidroomsOPTIONS23F88D3B:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/Resource
+  awsCrudDemotest11configidroomsOPTIONS14B04F29:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: OPTIONS
       ResourceId:
-        Ref: awsCrudDemotest3configidrooms6F8D085C
+        Ref: awsCrudDemotest11configidrooms57FAEF80
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationResponses:
@@ -641,25 +641,25 @@ Resources:
             method.response.header.Access-Control-Allow-Origin: true
           StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/OPTIONS/Resource
-  awsCrudDemotest3configidroomstype7D351BE5:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/OPTIONS/Resource
+  awsCrudDemotest11configidroomstype6F1B79D9:
     Type: AWS::ApiGateway::Resource
     Properties:
       ParentId:
-        Ref: awsCrudDemotest3configidrooms6F8D085C
+        Ref: awsCrudDemotest11configidrooms57FAEF80
       PathPart: type
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/type/Resource
-  awsCrudDemotest3configidroomstypeOPTIONS71EEC6EB:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/type/Resource
+  awsCrudDemotest11configidroomstypeOPTIONS444799AC:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: OPTIONS
       ResourceId:
-        Ref: awsCrudDemotest3configidroomstype7D351BE5
+        Ref: awsCrudDemotest11configidroomstype6F1B79D9
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationResponses:
@@ -681,15 +681,15 @@ Resources:
             method.response.header.Access-Control-Allow-Origin: true
           StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/type/OPTIONS/Resource
-  awsCrudDemotest3configidroomstypePOST00390234:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/type/OPTIONS/Resource
+  awsCrudDemotest11configidroomstypePOSTEB98E720:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: POST
       ResourceId:
-        Ref: awsCrudDemotest3configidroomstype7D351BE5
+        Ref: awsCrudDemotest11configidroomstype6F1B79D9
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationHttpMethod: POST
@@ -707,31 +707,31 @@ Resources:
               - Ref: AWS::Region
               - :lambda:path/2015-03-31/functions/
               - Fn::GetAtt:
-                  - awsDynamoCrudDemotest38F32CC48
+                  - awsDynamoCrudDemotest11A3A88070
                   - Arn
               - /invocations
       MethodResponses:
         - StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/type/POST/Resource
-  awsCrudDemotest3configidroomstypetypecodeC0B719C8:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/type/POST/Resource
+  awsCrudDemotest11configidroomstypetypecode0FBE0D0C:
     Type: AWS::ApiGateway::Resource
     Properties:
       ParentId:
-        Ref: awsCrudDemotest3configidroomstype7D351BE5
+        Ref: awsCrudDemotest11configidroomstype6F1B79D9
       PathPart: "{typecode}"
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/type/{typecode}/Resource
-  awsCrudDemotest3configidroomstypetypecodeOPTIONSD67AAB27:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/type/{typecode}/Resource
+  awsCrudDemotest11configidroomstypetypecodeOPTIONS11EF4D6E:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: OPTIONS
       ResourceId:
-        Ref: awsCrudDemotest3configidroomstypetypecodeC0B719C8
+        Ref: awsCrudDemotest11configidroomstypetypecode0FBE0D0C
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationResponses:
@@ -753,15 +753,15 @@ Resources:
             method.response.header.Access-Control-Allow-Origin: true
           StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/type/{typecode}/OPTIONS/Resource
-  awsCrudDemotest3configidroomstypetypecodeDELETE69160411:
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/type/{typecode}/OPTIONS/Resource
+  awsCrudDemotest11configidroomstypetypecodeDELETE7F057544:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: DELETE
       ResourceId:
-        Ref: awsCrudDemotest3configidroomstypetypecodeC0B719C8
+        Ref: awsCrudDemotest11configidroomstypetypecode0FBE0D0C
       RestApiId:
-        Ref: awsCrudDemotest33D676BCF
+        Ref: awsCrudDemotest116BF247D6
       AuthorizationType: NONE
       Integration:
         IntegrationHttpMethod: POST
@@ -779,39 +779,39 @@ Resources:
               - Ref: AWS::Region
               - :lambda:path/2015-03-31/functions/
               - Fn::GetAtt:
-                  - awsDynamoCrudDemotest38F32CC48
+                  - awsDynamoCrudDemotest11A3A88070
                   - Arn
               - /invocations
       MethodResponses:
         - StatusCode: "200"
     Metadata:
-      aws:cdk:path: CloudInfraDemoStacktest3/awsCrudDemotest3/Default/config/{id}/rooms/type/{typecode}/DELETE/Resource
+      aws:cdk:path: CloudInfraDemoStacktest11/awsCrudDemotest11/Default/config/{id}/rooms/type/{typecode}/DELETE/Resource
   CDKMetadata:
     Type: AWS::CDK::Metadata
     Properties:
       Modules: aws-cdk=1.3.0,@aws-cdk/assets=1.3.0,@aws-cdk/aws-apigateway=1.3.0,@aws-cdk/aws-applicationautoscaling=1.3.0,@aws-cdk/aws-autoscaling-common=1.3.0,@aws-cdk/aws-cloudwatch=1.3.0,@aws-cdk/aws-dynamodb=1.3.0,@aws-cdk/aws-ec2=1.3.0,@aws-cdk/aws-events=1.3.0,@aws-cdk/aws-iam=1.3.0,@aws-cdk/aws-kms=1.3.0,@aws-cdk/aws-lambda=1.3.0,@aws-cdk/aws-s3=1.3.0,@aws-cdk/aws-s3-assets=1.3.0,@aws-cdk/aws-sqs=1.3.0,@aws-cdk/aws-ssm=1.3.0,@aws-cdk/core=1.3.0,@aws-cdk/cx-api=1.3.0,@aws-cdk/region-info=1.3.0,jsii-runtime=node.js/v10.16.0
 Parameters:
-  awsDynamoCrudDemotest3CodeS3Bucket65BDCF26:
+  awsDynamoCrudDemotest11CodeS3Bucket4085E4FC:
     Type: String
-    Description: S3 bucket for asset "CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/Code"
-  awsDynamoCrudDemotest3CodeS3VersionKey338DBF37:
+    Description: S3 bucket for asset "CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/Code"
+  awsDynamoCrudDemotest11CodeS3VersionKey65C166C0:
     Type: String
-    Description: S3 key for asset version "CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/Code"
-  awsDynamoCrudDemotest3CodeArtifactHash05705B69:
+    Description: S3 key for asset version "CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/Code"
+  awsDynamoCrudDemotest11CodeArtifactHash341712D3:
     Type: String
-    Description: Artifact hash for asset "CloudInfraDemoStacktest3/awsDynamoCrudDemotest3/Code"
+    Description: Artifact hash for asset "CloudInfraDemoStacktest11/awsDynamoCrudDemotest11/Code"
 Outputs:
-  awsCrudDemotest3Endpoint4E5ABB83:
+  awsCrudDemotest11Endpoint2BCF30A9:
     Value:
       Fn::Join:
         - ""
         - - https://
-          - Ref: awsCrudDemotest33D676BCF
+          - Ref: awsCrudDemotest116BF247D6
           - .execute-api.
           - Ref: AWS::Region
           - "."
           - Ref: AWS::URLSuffix
           - /
-          - Ref: awsCrudDemotest3DeploymentStageprodEE65860A
+          - Ref: awsCrudDemotest11DeploymentStageprod5BF44B71
           - /
 

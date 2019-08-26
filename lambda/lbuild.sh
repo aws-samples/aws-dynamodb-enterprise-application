@@ -17,11 +17,11 @@ echo "GOPATH set to $GOPATH"
 echo "2-Cleaning old builds"
 mkdir src/main
 export GOOS=linux
+rm main main.zip
 echo "3-Building application"
 go build -o main src/main/main.go
 zip main.zip main
 echo "4-Deploying to Lambda"
 sh push.sh $env
-rm main main.zip
 fi
 
