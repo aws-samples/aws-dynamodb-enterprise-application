@@ -40,12 +40,14 @@ var DB_TABLE_CONFIG_NAME string = "aws-crud-demo-config-"+LAMBDA_ENV
 var DB_TABLE_CONFIG_PK string = "code"
 var DB_TABLE_CONFIG_SK string = "itemType"
 
-	//2-Setup the partition key and sort key for the main db table
+//It is a best practice to instanciate the dynamoDB client outside
+//of the lambda function handler.
+//https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.Lambda.BestPracticesWithDynamoDB.html
 var configDb =  db.Init(DB_TABLE_CONFIG_NAME,DB_TABLE_CONFIG_PK, DB_TABLE_CONFIG_SK)
 
 func HandleRequest(ctx context.Context, wrapper model.RqWrapper) (model.ResWrapper, error) {
 	log.Printf("Received Request %+v", wrapper)
-	//1-Validate request body with rues (may need to be a different function per use case)
+	//Validate request body with rues (may need to be a different function per use case)
 	err := ValidateRequest(wrapper.Request)
 	res := model.ResWrapper{}
 	if(err == nil) {
