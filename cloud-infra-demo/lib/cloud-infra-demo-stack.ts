@@ -24,9 +24,9 @@ export class CloudInfraDemoStack extends cdk.Stack {
      * LAMBDA FUNCTIONS DECLARATIONS
      * **********************************/
     
-    const manageCloudrackConfigLambda = new lambda.Function(this, 'awsDynamoCrudDemo'+envName, {
+    const awsEnterpriseApplicationDemoLambda = new lambda.Function(this, 'awsEnterpriseApplicationDemo'+envName, {
       code: new lambda.AssetCode('../lambda/main.zip'),
-      functionName: "manageCloudrackConfig"+envName,
+      functionName: "awsEnterpriseApplicationDemo"+envName,
       handler: 'main',
       runtime: lambda.Runtime.GO_1_X,
       environment: {
@@ -44,7 +44,7 @@ export class CloudInfraDemoStack extends cdk.Stack {
     });
 
     //grant lamda fnuction access to our dynamo table
-   table.grantReadWriteData(manageCloudrackConfigLambda);
+   table.grantReadWriteData(awsEnterpriseApplicationDemoLambda);
 
   /**********************
    * API GATEWAY
@@ -100,7 +100,7 @@ export class CloudInfraDemoStack extends cdk.Stack {
   }
 
   function buildConfigLambdaIntegration(fnName : string, customBody?: string): any{
-    return new apigateway.LambdaIntegration(manageCloudrackConfigLambda,{
+    return new apigateway.LambdaIntegration(awsEnterpriseApplicationDemoLambda,{
       proxy: false,
       requestTemplates: {
         'application/json': customBody || buildDefaultTpl(fnName)

@@ -12,7 +12,7 @@ then
     echo "Usage:"
     echo "sh lbuild.sh <env>"
 else
-    aws lambda update-function-code --function-name manageCloudrackConfig$env --zip-file fileb://main.zip
+    aws lambda update-function-code --function-name awsEnterpriseApplicationDemo$env --zip-file fileb://main.zip
 fi
 
 

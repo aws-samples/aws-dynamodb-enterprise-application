@@ -40,13 +40,13 @@ var DB_TABLE_CONFIG_NAME string = "aws-crud-demo-config-"+LAMBDA_ENV
 var DB_TABLE_CONFIG_PK string = "code"
 var DB_TABLE_CONFIG_SK string = "itemType"
 
+	//2-Setup the partition key and sort key for the main db table
+var configDb =  db.Init(DB_TABLE_CONFIG_NAME,DB_TABLE_CONFIG_PK, DB_TABLE_CONFIG_SK)
+
 func HandleRequest(ctx context.Context, wrapper model.RqWrapper) (model.ResWrapper, error) {
 	log.Printf("Received Request %+v", wrapper)
 	//1-Validate request body with rues (may need to be a different function per use case)
 	err := ValidateRequest(wrapper.Request)
-	//2-Setup the partition key and sort key for the main db pable (this may need to change as well)
-	//test
-    configDb :=  db.Init(DB_TABLE_CONFIG_NAME,DB_TABLE_CONFIG_PK, DB_TABLE_CONFIG_SK)
 	res := model.ResWrapper{}
 	if(err == nil) {
 		if(wrapper.SubFunction == FN_CONFIG_LIST_HOTEL) {
@@ -109,7 +109,7 @@ func HandleRequest(ctx context.Context, wrapper model.RqWrapper) (model.ResWrapp
 	return res, err
 }
 
-
+//TODO: Write the validation logic
 func ValidateRequest(hotel model.Hotel) error{
 		return nil
 }
