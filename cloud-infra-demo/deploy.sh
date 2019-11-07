@@ -15,7 +15,7 @@ else
     echo "0-Building stack for environement '$env' "
     npm run build
     echo "1-Synthesizing CloudFormation template for environement '$env' "
-    cdk synth -c envName=$env > crud-demo-stack.json
+    cdk synth -c envName=$env > crud-demo-stack.yml
     echo "2-Analayzing changes for environement '$env' "
     cdk diff -c envName=$env
     echo "2-Deploying infrastructure for environement '$env' "
