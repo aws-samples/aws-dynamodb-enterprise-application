@@ -1,6 +1,6 @@
 # Building enterprise applications using DynamoDB, Lambda and Go
 
-Demo project for the AWS blog post [Building enterprise applications using DynamoDB, Lambda and Go](https://aws.amazon.com/blogs/database/). It contains the infrastructure script using AWS Cloud Developmeent Script (CDK) along with the code for a lambda function described in the post.
+Demo project for the AWS blog post [Building enterprise applications using DynamoDB, Lambda and Go](https://aws.amazon.com/blogs/database/building-enterprise-applications-using-amazon-dynamodb-aws-lambda-and-golang/). It contains the infrastructure script using AWS Cloud Developmeent Script (CDK) along with the code for a lambda function described in the post.
 
 To build the AWS environment, we use **AWS Cloud Development Kit (CDK)**. AWS CDK is an infrastructure as code technology that allows developers to achieve predictable and repeatable deployment by scripting infrastructure definition using **TypeScript, JavaScript, or Python (C#/.Net and Java are also currently in developer preview)**. It is an effective way to deploy an API Gateway infrastructure in that allows the definition of Lambda JSON integration templates directly in the code (as opposed to having escaped JSON code in the middle of a CloudFormation template). To get started with AWS CDK, visit the [Getting Started page](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html).
 
